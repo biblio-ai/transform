@@ -1,0 +1,6 @@
+host: dm_host_here
+port: 5432
+user: postgres
+name: postgres
+password: db_password_here
+
