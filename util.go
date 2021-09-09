@@ -1,18 +1,18 @@
 package main
 
 import (
-	"os"
 	"fmt"
-      )
+	"os"
+)
 
 // fileExists checks if a file exists and is not a directory before we
 // try using it to prevent further errors.
 func fileExists(filename string) bool {
-    info, err := os.Stat(filename)
-    if os.IsNotExist(err) {
-        return false
-    }
-    return !info.IsDir()
+	info, err := os.Stat(filename)
+	if os.IsNotExist(err) {
+		return false
+	}
+	return !info.IsDir()
 }
 
 func Chunks(s string, chunkSize int) []string {
@@ -35,7 +35,6 @@ func Chunks(s string, chunkSize int) []string {
 	}
 	return chunks
 }
-func Var_dump(expression ...interface{} ) {
+func Var_dump(expression ...interface{}) {
 	fmt.Println(fmt.Sprintf("%#v", expression))
 }
-
