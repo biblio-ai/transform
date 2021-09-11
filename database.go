@@ -43,4 +43,6 @@ func createBiblioDB(env *Env) {
 	statement_entity.Exec()
 	statement_entity, _ = env.db.Prepare("CREATE TABLE IF NOT EXISTS item_text_key_phrase (id uuid DEFAULT uuid_generate_v4() PRIMARY KEY, item_id uuid, timestamp INTEGER,  value TEXT, CONSTRAINT fk_item_text_key_phrase FOREIGN KEY(item_id) REFERENCES item(id) ON DELETE CASCADE)")
 	statement_entity.Exec()
+	statement_entity, _ = env.db.Prepare("CREATE TABLE IF NOT EXISTS item_log (id uuid DEFAULT uuid_generate_v4() PRIMARY KEY, item_id uuid, timestamp INTEGER, section TEXT,  value TEXT, CONSTRAINT fk_item_text_key_phrase FOREIGN KEY(item_id) REFERENCES item(id) ON DELETE CASCADE)")
+	statement_entity.Exec()
 }

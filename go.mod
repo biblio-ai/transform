@@ -22,6 +22,8 @@ require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/form3tech-oss/jwt-go v3.2.2+incompatible // indirect
 	github.com/joho/godotenv v1.3.0 // indirect
+	github.com/rubenfonseca/fastimage v0.0.0-20170112075114-7e006a27a95b // indirect
+	github.com/sillydong/fastimage v0.0.0-20210316103058-01a6ead38a9b // indirect
 	golang.org/x/crypto v0.0.0-20201002170205-7f63de1d35b0 // indirect
 	gopkg.in/yaml.v2 v2.2.2 // indirect
 	olympos.io/encoding/edn v0.0.0-20200308123125-93e3b8dd0e24 // indirect

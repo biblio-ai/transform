@@ -34,8 +34,12 @@ github.com/mattn/go-sqlite3 v1.14.8 h1:gDp86IdQsN/xWjIEmr9MF6o9mpksUgh0fu+9ByFxz
 github.com/mattn/go-sqlite3 v1.14.8/go.mod h1:NyWgC/yNuGj7Q9rpYnZvas74GogHl5/Z4A/KQRfk6bU=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/rubenfonseca/fastimage v0.0.0-20170112075114-7e006a27a95b h1:F8SRXk6Ahld/UDZqhM5XFNsGRRjMYhpNz5mxe5bjSKI=
+github.com/rubenfonseca/fastimage v0.0.0-20170112075114-7e006a27a95b/go.mod h1:za/FM5/4JjuNHv6y8CdQrGuxtnJP4NBVauNR05i/0HQ=
 github.com/satori/go.uuid v1.2.0 h1:0uYX9dsZ2yD7q2RtLRtPSdGDWzjeM3TbMJP9utgA0ww=
 github.com/satori/go.uuid v1.2.0/go.mod h1:dA0hQrYB0VpLJoorglMZABFdXlWrHn1NEOzdhQKdks0=
+github.com/sillydong/fastimage v0.0.0-20210316103058-01a6ead38a9b h1:QdOjLkdadEGRFFl75aV5tHonmeQ3sX0Cm572AM8vuKA=
+github.com/sillydong/fastimage v0.0.0-20210316103058-01a6ead38a9b/go.mod h1:ovQEmN4pXHksgrntvoWKodGGepcDw5HcXSTdFZf8nog=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0 h1:TivCn/peBQ7UY8ooIcPgZFpTNSz0Q2U6UrFlUfqbe0Q=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=

@@ -203,6 +203,12 @@ func main() {
 				fmt.Println(err)
 				return
 			}
+			statement_metadata_name := `INSERT INTO item_metadata (item_id, metadata_key, metadata_value) VALUES ($1,$2,$3)`
+                        _, err = env.db.Exec(statement_metadata_name, inserted_item_id, "name", "slv-primo")
+			if err != nil {
+				fmt.Println(err)
+				return
+			}
 
 			if len(url) > 0 {
 				fmt.Println("Prepare insert - url")
