@@ -17,7 +17,7 @@ func main() {
 
     uriBase := endpoint + "vision/v3.2/analyze"
     const imageUrl =
-        "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16319712"
+        "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16344009"
 
     const params = "?visualFeatures=Description,Faces,Tags,Objects"
     uri := uriBase + params
