@@ -15,10 +15,10 @@ func main() {
 	subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
 	endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
-	uriBase := endpoint + "vision/v3.2/analyze"
-	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16344009"
+	uriBase := endpoint + "vision/v3.2/read/analyze"
+	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL20230729"
 
-	const params = "?visualFeatures=Description,Faces,Tags,Objects"
+	const params = "?readingOrder=natural&model-version=latest"
 	uri := uriBase + params
 	const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 
@@ -46,6 +46,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Println(resp.Header.Get("Operation-Location"))
+	fmt.Println(resp.Header.Get("apim-request-id"))
 
 	defer resp.Body.Close()
 

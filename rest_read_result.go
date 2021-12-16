@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -15,16 +14,11 @@ func main() {
 	subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
 	endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
-	uriBase := endpoint + "vision/v3.2/analyze"
-	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16344009"
-
-	const params = "?visualFeatures=Description,Faces,Tags,Objects"
+	uriBase := endpoint + "vision/v3.2/read/analyzeResults/"
+	const params = "ed18ee22-982c-46cd-942a-5425e6b3370c"
 	uri := uriBase + params
-	const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 
-	fmt.Println(imageUrlEnc)
 	fmt.Println(uri)
-	reader := strings.NewReader(imageUrlEnc)
 
 	// Create the HTTP client
 	client := &http.Client{
@@ -32,26 +26,25 @@ func main() {
 	}
 
 	// Create the POST request, passing the image URL in the request body
-	req, err := http.NewRequest("POST", uri, reader)
+	req_read, err := http.NewRequest("GET", uri, nil)
 	if err != nil {
 		panic(err)
 	}
-
 	// Add request headers
-	req.Header.Add("Content-Type", "application/json")
-	req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
+	req_read.Header.Add("Content-Type", "application/json")
+	req_read.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 
 	// Send the request and retrieve the response
-	resp, err := client.Do(req)
+	resp_read, err := client.Do(req_read)
 	if err != nil {
 		panic(err)
 	}
 
-	defer resp.Body.Close()
+	defer resp_read.Body.Close()
 
 	// Read the response body
 	// Note, data is a byte array
-	data, err := ioutil.ReadAll(resp.Body)
+	data, err := ioutil.ReadAll(resp_read.Body)
 	if err != nil {
 		panic(err)
 	}
