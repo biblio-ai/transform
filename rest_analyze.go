@@ -15,28 +15,10 @@ func main() {
 	subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
 	endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
-	uriBase := endpoint + "vision/v3.2/read/analyze"
-	//uriBase := endpoint + "vision/v3.2/ocr"
-	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL19637103"
+	uriBase := endpoint + "vision/v3.2/analyze"
+	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16345613"
 
-	const params = "?readingOrder=natural&model-version=2021-09-30-preview"
-	//const params = "?model-version=latest"
-	//const params = "?detechOrientation=true&model-version=latest"
-
-	uri := uriBase + params
-	fmt.Println(uri)
-	const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
-
-	reader := strings.NewReader(imageUrlEnc)
-
-	fmt.Println(imageUrlEnc)
-
-	// Create the HTTP client
-	client := &http.Client{
-		Timeout: time.Second * 20,
-	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL20230729"
-
-	const params = "?readingOrder=natural&model-version=latest"
+	const params = "?visualFeatures=Description,Faces,Tags,Objects"
 	uri := uriBase + params
 	const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 
@@ -64,9 +46,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println(resp.Header.Get("Operation-Location"))
-	fmt.Println(resp.Header.Get("apim-request-id"))
 
 	defer resp.Body.Close()
 
