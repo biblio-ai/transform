@@ -21,6 +21,7 @@ require (
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/form3tech-oss/jwt-go v3.2.2+incompatible // indirect
+	github.com/gofrs/uuid v4.2.0+incompatible // indirect
 	github.com/joho/godotenv v1.3.0 // indirect
 	github.com/rubenfonseca/fastimage v0.0.0-20170112075114-7e006a27a95b // indirect
 	github.com/sillydong/fastimage v0.0.0-20210316103058-01a6ead38a9b // indirect

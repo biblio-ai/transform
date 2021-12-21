@@ -17,9 +17,12 @@ func main() {
 
 	uriBase := endpoint + "vision/v3.2/read/analyze"
 	//uriBase := endpoint + "vision/v3.2/ocr"
-	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL19637103"
+
+	//const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL19637103"
+	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16345007"
 
 	const params = "?readingOrder=natural&model-version=2021-09-30-preview"
+	//const params = "?readingOrder=natural&model-version=latest"
 	//const params = "?model-version=latest"
 	//const params = "?detechOrientation=true&model-version=latest"
 
@@ -30,24 +33,12 @@ func main() {
 	reader := strings.NewReader(imageUrlEnc)
 
 	fmt.Println(imageUrlEnc)
+	fmt.Println(uri)
 
 	// Create the HTTP client
 	client := &http.Client{
 		Timeout: time.Second * 20,
-	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL20230729"
-
-	const params = "?readingOrder=natural&model-version=latest"
-	uri := uriBase + params
-	const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
-
-	fmt.Println(imageUrlEnc)
-	fmt.Println(uri)
-	reader := strings.NewReader(imageUrlEnc)
-
-	// Create the HTTP client
-	client := &http.Client{
-		Timeout: time.Second * 10,
-	}
+        } 
 
 	// Create the POST request, passing the image URL in the request body
 	req, err := http.NewRequest("POST", uri, reader)

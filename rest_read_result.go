@@ -15,7 +15,7 @@ func main() {
 	endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
 	uriBase := endpoint + "vision/v3.2/read/analyzeResults/"
-	const params = "ed18ee22-982c-46cd-942a-5425e6b3370c"
+	const params = "7968322a-6b57-41d7-9166-f8d11ee659cc"
 	uri := uriBase + params
 
 	fmt.Println(uri)

@@ -7,6 +7,7 @@ import (
 	"fmt"
 	//"github.com/Azure/azure-sdk-for-go/services/preview/cognitiveservices/v3.0-preview/computervision"
 	"github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/computervision"
+	//"github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v3.1/computervision"
 	"github.com/Azure/go-autorest/autorest"
 	"log"
 	"os"
@@ -50,6 +51,7 @@ type ConfigDatabase struct {
 	Name     string `yaml:"name" env-default:"postgres"  env-description:"Database host"`
 	User     string `yaml:"user"  env-default:"postgres" env-description:"Database host"`
 	Password string `yaml:"password" env-description:"Database host"`
+	Model string `yaml:"model" env-description:"AI model number"`
 }
 
 var cfg ConfigDatabase
@@ -122,6 +124,7 @@ func main() {
 
 	//stg_rows, err := env.db.Query("SELECT url as file_url,header_identifier, date_latest, metadata_identifier, metadata_identifier_handle_id, metadata_identifier_cms_id, metadata_identifier_accession_id, metadata_identifier_file_id from stg_slv_primo where metadata_identifier like 'IE%'")
 	stg_rows_url, err := env.db.Query("SELECT distinct url as stg_url from stg_slv_primo")
+//	stg_rows_url, err := env.db.Query("SELECT distinct url as stg_url from stg_slv_primo where metadata_identifier like 'IE20347212'")
 	if err != nil {
 		// handle this error better than this
 		panic(err)
@@ -158,8 +161,8 @@ func main() {
 
 		var url string
 
-		stmt := `select id, url from item where url = $1 limit 1`
-		row := env.db.QueryRow(stmt, imageURL)
+		stmt := `select i.id, i.url from item i left join item_metadata im on i.id = im.item_id where i.url = $1 AND metadata_key = 'model' and metadata_value = $2 limit 1`
+		row := env.db.QueryRow(stmt, imageURL, cfg.Model)
 		switch err := row.Scan(&item_id, &url); err {
 		case sql.ErrNoRows:
 			fmt.Println("No rows were returned!")
@@ -172,6 +175,8 @@ func main() {
 
 			fmt.Println("URL not found - getting all data")
 			fmt.Println(imageURL)
+			fmt.Println("Model")
+			fmt.Println(cfg.Model)
 
 			stmt_all := `SELECT url,header_identifier, date_latest, metadata_identifier, metadata_identifier_handle_id, metadata_identifier_cms_id, metadata_identifier_accession_id, metadata_identifier_file_id from stg_slv_primo where url = $1 limit 1`
 			stg_rows_all := env.db.QueryRow(stmt_all, stg_url)
@@ -222,6 +227,17 @@ func main() {
 				}
 			}
 
+			if len(cfg.Model) > 0 {
+				fmt.Println("Prepare insert - model")
+				metadata_key := "model"
+				metadata_value := cfg.Model
+				statement_metadata := `INSERT INTO item_metadata (item_id, metadata_key, metadata_value) VALUES ($1,$2,$3)`
+				_, err = env.db.Exec(statement_metadata, inserted_item_id, metadata_key, metadata_value)
+				if err != nil {
+					fmt.Println(err)
+					return
+				}
+			}
 			if len(header_identifier) > 0 {
 				fmt.Println("Prepare insert - header_identifier")
 				metadata_key := "header_identifier"
