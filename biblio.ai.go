@@ -343,9 +343,10 @@ func main() {
 		BatchReadFileRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
 
 		// Analyze features of an image, remote
-		DescribeRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
+		//DescribeRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
 		CategorizeRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
-		TagRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
+		AnalyzeImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
+		//TagRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
 		DetectFacesRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
 		DetectObjectsRemoteImage(env, computerVisionClient, imageURL, inserted_item_id, timestamp)
 		// DetectBrandsRemoteImage(env,computerVisionClient, imageURL, inserted_item_id, timestamp)

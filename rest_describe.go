@@ -61,18 +61,10 @@ func main() {
 	subscriptionKey := os.Getenv("COMPUTER_VISION_SUBSCRIPTION_KEY")
 	endpoint := os.Getenv("COMPUTER_VISION_ENDPOINT")
 
-	uriBase := endpoint + "vision/v3.2/analyze"
-	//const imageUrl = "https://content.api.news/v3/images/bin/1ce873e8b2fc3ab1d52666c6c3f44c32"
-	//const imageUrl = "https://images.ehive.com/accounts/3492/objects/images/1n6qa8t_902a_l.jpg"
-//	const imageUrl = "http://ergo.slv.vic.gov.au/sites/default/files/imagecache/zoom_thumb/PAC-10000786.jpg"
-//	const imageUrl = "https://images.fineartamerica.com/images-medium-large-5/william-buckley-sent-to-australia-mary-evans-picture-library.jpg"
-	const imageUrl = "http://www3.slv.vic.gov.au/latrobejournal/issue/latrobe-01/large/latrobe-01P007a.jpg"
-	//const imageUrl = "https://i0.wp.com/www.australiangeographic.com.au/wp-content/uploads/2018/06/William_Buckley-nla-article2.jpg?w=620&ssl=1"
-	//const imageUrl = "https://f4.bcbits.com/img/a2674061788_16.jpg"
-	//const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16344009"
-//	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16345613"
+	uriBase := endpoint + "vision/v3.2/describe"
+	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16345007"
 
-	const params = "?visualFeatures=Categories,Description,Faces,Objects,Tags&model-version=latest"
+	const params = "?maxCanidates=5&model-version=2021-04-01"
 	uri := uriBase + params
 	const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 
