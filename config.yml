@@ -3,4 +3,4 @@ port: 5432
 user: postgres
 name: postgres
 password: db_password_here
-
+model: 3.2
