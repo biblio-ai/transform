@@ -19,7 +19,8 @@ func main() {
 	//uriBase := endpoint + "vision/v3.2/ocr"
 
 	//const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL19637103"
-	const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16345007"
+	//const imageUrl = "https://rosetta.slv.vic.gov.au/delivery/DeliveryManagerServlet?dps_func=stream&dps_pid=FL16345007"
+	const imageUrl = "https://f001.backblazeb2.com/file/biblio-ai-public/busselton/1911-1916/1911-11-15-1916_Municipality_of_Busselton_Rate_Book-001.png"
 
 	const params = "?readingOrder=natural&model-version=2021-09-30-preview"
 	//const params = "?readingOrder=natural&model-version=latest"
